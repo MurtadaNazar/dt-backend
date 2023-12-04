@@ -14,18 +14,18 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('userName')->nullable();
+            $table->string('userName');
             $table->string('passWord');
             $table->enum('type', ['Admin', 'Agent']);
             $table->boolean('status')->default(true);
-            $table->string('faceBook');
-            $table->string('instagram');
-            $table->string('youTube');
-            $table->string('telegram');
-            $table->string('imageUrl');
+            $table->string('faceBook')->nullable();
+            $table->string('instagram')->nullable();
+            $table->string('youTube')->nullable();
+            $table->string('telegram')->nullable();
+            $table->string('imageUrl')->nullable();
             $table->rememberToken();
+            $table->softDeletes();
             $table->timestamps();
-            $table->timestamp('deletedAt')->nullable();
         });
     }
 
