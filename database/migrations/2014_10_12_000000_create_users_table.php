@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('userName');
-            $table->string('passWord');
+            $table->string('password');
             $table->enum('type', ['Admin', 'Agent']);
             $table->boolean('status')->default(true);
             $table->string('faceBook')->nullable();

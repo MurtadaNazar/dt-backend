@@ -45,15 +45,15 @@
                             </div>
 
                             <div class="row mb-3">
-                                <label for="passWord"
+                                <label for="password"
                                     class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="passWord" type="password"
-                                        class="form-control @error('passWord') is-invalid @enderror" name="passWord"
-                                        required autocomplete="new-passWord">
+                                    <input id="password" type="password"
+                                        class="form-control @error('password') is-invalid @enderror" name="password"
+                                        required autocomplete="new-password">
 
-                                    @error('passWord')
+                                    @error('password')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
@@ -62,12 +62,12 @@
                             </div>
 
                             <div class="row mb-3">
-                                <label for="passWord-confirm"
+                                <label for="password-confirm"
                                     class="col-md-4 col-form-label text-md-end">{{ __('Confirm Password') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="passWord-confirm" type="password" class="form-control"
-                                        name="passWord_confirmation" required autocomplete="new-passWord">
+                                    <input id="password-confirm" type="password" class="form-control"
+                                        name="password_confirmation" required autocomplete="new-password">
                                 </div>
                             </div>
 

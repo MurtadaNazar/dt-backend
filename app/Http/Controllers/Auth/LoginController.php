@@ -18,11 +18,6 @@ class LoginController extends Controller
     | to conveniently provide its functionality to your applications.
     |
     */
-    public function username()
-    {
-        return 'userName';
-    }
-
 
     use AuthenticatesUsers;
 
@@ -31,7 +26,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    protected $redirectTo = 'auth/home';
 
     /**
      * Create a new controller instance.
