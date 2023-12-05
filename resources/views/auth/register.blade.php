@@ -46,10 +46,10 @@
 
                             <div class="row mb-3">
                                 <label for="passWord"
-                                    class="col-md-4 col-form-label text-md-end">{{ __('passWord') }}</label>
+                                    class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="passWord" type="passWord"
+                                    <input id="passWord" type="password"
                                         class="form-control @error('passWord') is-invalid @enderror" name="passWord"
                                         required autocomplete="new-passWord">
 
@@ -63,10 +63,10 @@
 
                             <div class="row mb-3">
                                 <label for="passWord-confirm"
-                                    class="col-md-4 col-form-label text-md-end">{{ __('Confirm passWord') }}</label>
+                                    class="col-md-4 col-form-label text-md-end">{{ __('Confirm Password') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="passWord-confirm" type="passWord" class="form-control"
+                                    <input id="passWord-confirm" type="password" class="form-control"
                                         name="passWord_confirmation" required autocomplete="new-passWord">
                                 </div>
                             </div>
