@@ -26,7 +26,7 @@ class IsActive
             $user = User::where($credentials)->first();
             if (!$user || $user->status == '0') {
                 Auth::logout();
-                return redirect()->route('login')->withErrors(['message' => 'Your account is inactive. Please contact support.']);
+                return redirect()->route('login')->withErrors(['message' => 'Your account not found or is inactive. Please contact support.']);
             }
         }
 
