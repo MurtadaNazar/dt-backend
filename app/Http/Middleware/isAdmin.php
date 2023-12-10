@@ -19,15 +19,31 @@ class isAdmin
         $user = Auth::user();
 
         if (auth()->check()) {
-            if ($user->type == 'Admin' && $request->route()->getName() === 'auth.home') {
-                return $next($request);
-            } elseif ($user->type == 'Agent' && $request->route()->getName() === 'user.home') {
-                return $next($request);
+            // check if the user is admin
+            if ($user->type == 'Admin') {
+                $allowedAdminRoutes = ['users.index', 'users.create', 'users.store', 'users.show', 'users.edit', 'users.update', 'users.destroy'];
+                // check if the requested route is allowed for admin
+                if (in_array($request->route()->getName(), $allowedAdminRoutes)) {
+                    return $next($request);
+                } elseif ($request->route()->getName() != 'auth.home') {
+                    return redirect(route('auth.home'));
+                }
+            } // check if the user is agent
+            elseif ($user->type == 'Agent') {
+                $allowedUserRoutes = ['user.home', 'users.show', 'users.edit', 'users.update'];
+                //  check if the requested route is allowed for agents
+                if (in_array($request->route()->getName(), $allowedUserRoutes)) {
+                    return $next($request);
+                } elseif (!in_array($request->route()->getName(), $allowedUserRoutes)) {
+                    return redirect(route('user.home'));
+                }
             } else {
                 return redirect($user->type == 'Admin' ? route('auth.home') : route('user.home'));
             }
         } else {
-            return redirect('/');
+            return redirect('auth.home');
         }
+        return
+            $next($request);
     }
 }

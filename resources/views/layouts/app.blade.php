@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
@@ -7,7 +7,6 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
     <title>{{ config('app.name', 'DT') }}</title>
 
     <!-- Fonts -->
@@ -34,6 +33,28 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('user.home') }}">
+                                <i class="fas fa-home me-2"></i> Home
+                            </a>
+                        </li>
+                        @if (Auth::check() && Auth::user()->id)
+                            <li class="nav-item">
+
+                                <a class="nav-link" href="{{ route('users.show', [Auth::user()->id]) }}">
+                                    <i class="fas fa-user me-2"></i> Profile
+                                </a>
+
+                            </li>
+                            @if (Auth::user()->type == 'Admin')
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('users.index', [Auth::user()->id]) }}">
+                                        <i class="fa-solid fa-users me-2"></i> Agent's
+
+                                    </a>
+                                </li>
+                            @endif
+                        @endif
 
                     </ul>
 
@@ -44,12 +65,6 @@
                             @if (Route::has('login'))
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                                </li>
-                            @endif
-
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
                             @endif
                         @else

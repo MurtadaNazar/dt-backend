@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 
 class LoginController extends Controller
 {
@@ -35,6 +37,20 @@ class LoginController extends Controller
      */
     public function __construct()
     {
+        $this->middleware('IsActive');
         $this->middleware('guest')->except('logout');
+    }
+
+    protected function attemptLogin(Request $request)
+    {
+        $credentials = $this->credentials($request);
+
+        // Check if middleware redirected with error
+        if ($errors = $request->session()->get('errors')) {
+            return back()->withErrors($errors);
+        }
+
+        // Attempt login with default logic
+        return Auth::attempt($credentials, $request->filled('remember'));
     }
 }

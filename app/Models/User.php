@@ -29,7 +29,6 @@ class User extends Authenticatable
         'telegram',
         'imageUrl',
     ];
-
     /**
      * The attributes that should be hidden for serialization.
      *
