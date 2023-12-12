@@ -14,11 +14,21 @@ Route::get('user/home', [App\Http\Controllers\User\HomeController::class, 'index
 
 
 Route::prefix('users')->middleware('isAdmin')->group(function () {
-    Route::get('/', [App\Http\Controllers\AdminCrudController::class, 'index'])->name('users.index');
+    Route::get('/', [App\Http\Controllers\AdminCrudController::class, 'indexView'])->name('users.index');
     Route::get('/create', [App\Http\Controllers\AdminCrudController::class, 'create'])->name('users.create');
     Route::post('/', [App\Http\Controllers\AdminCrudController::class, 'store'])->name('users.store');
     Route::get('/{user}', [App\Http\Controllers\AdminCrudController::class, 'show'])->name('users.show');
     Route::get('/{user}/edit', [App\Http\Controllers\AdminCrudController::class, 'edit'])->name('users.edit');
     Route::put('/{user}', [App\Http\Controllers\AdminCrudController::class, 'update'])->name('users.update');
     Route::delete('/{user}', [App\Http\Controllers\AdminCrudController::class, 'destroy'])->name('users.destroy');
+});
+
+Route::prefix('traders')->middleware('isAdmin')->group(function () {
+    Route::get('/', [App\Http\Controllers\BestTraderProfileController::class, 'index'])->name('traders.index');
+    Route::get('/create', [App\Http\Controllers\BestTraderProfileController::class, 'create'])->name('traders.create');
+    Route::post('/', [App\Http\Controllers\BestTraderProfileController::class, 'store'])->name('traders.store');
+    Route::get('/{user}', [App\Http\Controllers\BestTraderProfileController::class, 'show'])->name('traders.show');
+    Route::get('/{user}/edit', [App\Http\Controllers\BestTraderProfileController::class, 'edit'])->name('traders.edit');
+    Route::put('/{user}', [App\Http\Controllers\BestTraderProfileController::class, 'update'])->name('traders.update');
+    Route::delete('/{user}', [App\Http\Controllers\BestTraderProfileController::class, 'destroy'])->name('traders.destroy');
 });

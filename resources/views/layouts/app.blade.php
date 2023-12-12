@@ -40,17 +40,19 @@
                         </li>
                         @if (Auth::check() && Auth::user()->id)
                             <li class="nav-item">
-
                                 <a class="nav-link" href="{{ route('users.show', [Auth::user()->id]) }}">
                                     <i class="fas fa-user me-2"></i> Profile
                                 </a>
-
                             </li>
                             @if (Auth::user()->type == 'Admin')
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('users.index', [Auth::user()->id]) }}">
                                         <i class="fa-solid fa-users me-2"></i> Agent's
-
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('traders.index', [Auth::user()->id]) }}">
+                                        <i class="fa-solid fa-users me-2"></i> Trader's
                                     </a>
                                 </li>
                             @endif

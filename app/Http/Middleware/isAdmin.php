@@ -21,7 +21,10 @@ class isAdmin
         if (auth()->check()) {
             // check if the user is admin
             if ($user->type == 'Admin') {
-                $allowedAdminRoutes = ['users.index', 'users.create', 'users.store', 'users.show', 'users.edit', 'users.update', 'users.destroy'];
+                $allowedAdminRoutes = [
+                    'users.index', 'users.create', 'users.store', 'users.show', 'users.edit', 'users.update', 'users.destroy',
+                    'traders.index', 'traders.create', 'traders.store', 'traders.show', 'traders.edit', 'traders.update', 'traders.destroy'
+                ];
                 // check if the requested route is allowed for admin
                 if (in_array($request->route()->getName(), $allowedAdminRoutes)) {
                     return $next($request);
