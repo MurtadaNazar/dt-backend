@@ -33,11 +33,25 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('user.home') }}">
-                                <i class="fas fa-home me-2"></i> Home
-                            </a>
-                        </li>
+                        @if (Auth::check() && Auth::user()->type == 'Admin')
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('auth.home') }}">
+                                    <i class="fas fa-home me-2"></i> Home
+                                </a>
+                            </li>
+                        @elseif (Auth::check() && Auth::user()->type == 'Agent')
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('user.home') }}">
+                                    <i class="fas fa-home me-2"></i> Home
+                                </a>
+                            </li>
+                        @else
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url('/') }}">
+                                    <i class="fas fa-home me-2"></i> Home
+                                </a>
+                            </li>
+                        @endif
                         @if (Auth::check() && Auth::user()->id)
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('users.show', [Auth::user()->id]) }}">

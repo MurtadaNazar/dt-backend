@@ -6,7 +6,7 @@
             <div class="col-md-8">
                 <div class="card shadow-lg rounded-lg">
                     <div class="card-header bg-primary text-white">
-                        {{ __('Welcome,') }} {{ Auth::user()->name }}
+                        <h3 class="mb-0">{{ __('Welcome,') }} {{ Auth::user()->name }}</h3>
                     </div>
 
                     <div class="card-body">
@@ -15,9 +15,7 @@
                                 {{ session('status') }}
                             </div>
                         @endif
-
                         <p class="lead">You are logged in as an agent. Explore your dashboard below:</p>
-
                     </div>
                 </div>
             </div>

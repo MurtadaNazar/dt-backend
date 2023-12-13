@@ -4,8 +4,10 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-6">
-                <div class="card">
-                    <div class="card-header">{{ __('Login') }}</div>
+                <div class="card shadow-lg rounded">
+                    <div class="card-header bg-primary text-white">
+                        <h3 class="mb-0">{{ __('Login') }}</h3>
+                    </div>
 
                     <div class="card-body">
                         @if ($errors->has('message'))
