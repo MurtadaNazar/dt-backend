@@ -3,25 +3,20 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-
-use Illuminate\Http\Request;
+use App\Models\Comment;
+use App\Models\BestTraderProfile;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-
-
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
     public function index()
     {
-        return view('auth.home');
+        $totalComments = Comment::count();
+        $totalTraders = BestTraderProfile::count();
+        $totalAgents = User::count();
+        $latestComments = Comment::latest()->take(5)->get();
+
+        return view('auth.home', compact('totalComments', 'totalTraders', 'totalAgents', 'latestComments'));
     }
 }

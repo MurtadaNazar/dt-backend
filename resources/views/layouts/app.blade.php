@@ -52,7 +52,12 @@
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('traders.index', [Auth::user()->id]) }}">
-                                        <i class="fa-solid fa-users me-2"></i> Trader's
+                                        <i class="fa-solid fa-building"></i> Trader's
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('comments.index', [Auth::user()->id]) }}">
+                                        <i class="fa-solid fa-comments"></i> Comment's
                                     </a>
                                 </li>
                             @endif
