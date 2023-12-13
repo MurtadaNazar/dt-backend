@@ -74,6 +74,16 @@
                                         <i class="fa-solid fa-comments"></i> Comment's
                                     </a>
                                 </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('settings.index', [Auth::user()->id]) }}">
+                                        <i class="fa-solid fa-sliders"></i> Setting's
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('statistics.index', [Auth::user()->id]) }}">
+                                        <i class="fa-solid fa-square-poll-vertical"></i> Statistic's
+                                    </a>
+                                </li>
                             @endif
                         @endif
 

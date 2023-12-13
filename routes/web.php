@@ -41,3 +41,21 @@ Route::prefix('comments')->middleware('isAdmin')->group(function () {
     Route::put('/{comment}', [App\Http\Controllers\CommentController::class, 'update'])->name('comments.update');
     Route::delete('/{comment}', [App\Http\Controllers\CommentController::class, 'destroy'])->name('comments.destroy');
 });
+Route::prefix('settings')->middleware('isAdmin')->group(function () {
+    Route::get('/', [App\Http\Controllers\SettingsController::class, 'index'])->name('settings.index');
+    Route::get('/create', [App\Http\Controllers\SettingsController::class, 'create'])->name('settings.create');
+    Route::post('/', [App\Http\Controllers\SettingsController::class, 'store'])->name('settings.store');
+    Route::get('/{comment}', [App\Http\Controllers\SettingsController::class, 'show'])->name('settings.show');
+    Route::get('/{setting}/edit', [App\Http\Controllers\SettingsController::class, 'edit'])->name('settings.edit');
+    Route::put('/{setting}', [App\Http\Controllers\SettingsController::class, 'update'])->name('settings.update');
+    Route::delete('/{setting}', [App\Http\Controllers\SettingsController::class, 'destroy'])->name('settings.destroy');
+});
+Route::prefix('statistics')->middleware('isAdmin')->group(function () {
+    Route::get('/', [App\Http\Controllers\StatisticsController::class, 'index'])->name('statistics.index');
+    Route::get('/create', [App\Http\Controllers\StatisticsController::class, 'create'])->name('statistics.create');
+    Route::post('/', [App\Http\Controllers\StatisticsController::class, 'store'])->name('statistics.store');
+    Route::get('/{statistics}', [App\Http\Controllers\StatisticsController::class, 'show'])->name('statistics.show');
+    Route::get('/{statistics}/edit', [App\Http\Controllers\StatisticsController::class, 'edit'])->name('statistics.edit');
+    Route::put('/{statistics}', [App\Http\Controllers\StatisticsController::class, 'update'])->name('statistics.update');
+    Route::delete('/{statistics}', [App\Http\Controllers\StatisticsController::class, 'destroy'])->name('statistics.destroy');
+});

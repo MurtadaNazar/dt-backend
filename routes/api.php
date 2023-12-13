@@ -4,6 +4,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BestTraderProfileController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\SettingsController;
+use App\Http\Controllers\StatisticsController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -22,6 +25,15 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('/traders', function () {
     return app(BestTraderProfileController::class)->indexApi();
 });
+
 Route::get('/comments', function () {
     return app(CommentController::class)->indexApi();
+});
+
+Route::get('/settings', function () {
+    return app(SettingsController::class)->indexApi();
+});
+
+Route::get('/statistics', function () {
+    return app(StatisticsController::class)->indexApi();
 });

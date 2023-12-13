@@ -24,7 +24,9 @@ class isAdmin
                 $allowedAdminRoutes = [
                     'users.index', 'users.create', 'users.store', 'users.show', 'users.edit', 'users.update', 'users.destroy',
                     'traders.index', 'traders.create', 'traders.store', 'traders.show', 'traders.edit', 'traders.update', 'traders.destroy',
-                    'comments.index', 'comments.create', 'comments.store', 'comments.show', 'comments.edit', 'comments.update', 'comments.destroy'
+                    'comments.index', 'comments.create', 'comments.store', 'comments.show', 'comments.edit', 'comments.update', 'comments.destroy',
+                    'settings.index', 'settings.create', 'settings.store', 'settings.show', 'settings.edit', 'settings.update', 'settings.destroy',
+                    'statistics.index', 'statistics.create', 'statistics.store', 'statistics.show', 'statistics.edit', 'statistics.update', 'statistics.destroy',
                 ];
                 // check if the requested route is allowed for admin
                 if (in_array($request->route()->getName(), $allowedAdminRoutes)) {
