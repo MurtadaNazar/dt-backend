@@ -18,6 +18,29 @@ class AdminCrudController extends Controller
         return view('users.index', compact('users'));
     }
 
+    // index agent only 
+    public function indexAgent()
+    {
+        $users = User::where('type', 'Agent')->get();
+
+        $response = [];
+
+        foreach ($users as $user) {
+            $response[] = [
+                'name' => $user->name,
+                'imgUrl' => $user->imgUrl,
+                'socialLinks' => [
+                    'facebook' => $user->faceBook,
+                    'telegram' => $user->telegram,
+                    'instagram' => $user->instagram,
+                    'youtube' => $user->youTube,
+                ],
+            ];
+        }
+
+        return response()->json($response);
+    }
+
     public function create()
     {
         return view('users.create');
@@ -32,10 +55,10 @@ class AdminCrudController extends Controller
             'password' => 'required|string|confirmed|min:8',
             'type' => 'required|integer|in:1,2',
             'status' => 'required|boolean',
-            'faceBook' => 'nullable|active_url',
-            'instagram' => 'nullable|active_url',
-            'telegram' => 'nullable|active_url',
-            'youTube' => 'nullable|active_url',
+            'faceBook' => 'nullable',
+            'instagram' => 'nullable',
+            'telegram' => 'nullable|',
+            'youTube' => 'nullable',
         ]);
 
         // Handle image upload

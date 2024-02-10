@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminCrudController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BestTraderProfileController;
@@ -36,4 +37,19 @@ Route::get('/settings', function () {
 
 Route::get('/statistics', function () {
     return app(StatisticsController::class)->indexApi();
+});
+
+// index agent only
+Route::get('/agents', function () {
+    return app(AdminCrudController::class)->indexAgent();
+});
+
+// deposit bonus 
+Route::get('/depositBonus', function () {
+    return app(SettingsController::class)->lastDespositBonus();
+});
+
+// add image url
+Route::get('/addImageUrl', function () {
+    return app(SettingsController::class)->lastAddImageUrl();
 });

@@ -41,10 +41,15 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
+    public function username()
+    {
+        return 'userName';
+    }
+
     protected function attemptLogin(Request $request)
     {
-        $credentials = $this->credentials($request);
 
+        $credentials = $this->credentials($request);
         // Check if middleware redirected with error
         if ($errors = $request->session()->get('errors')) {
             return back()->withErrors($errors);

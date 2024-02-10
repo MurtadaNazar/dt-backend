@@ -35,6 +35,24 @@ class SettingsController extends Controller
         return response()->json($data);
     }
 
+    // return only last despositBonus 
+    public function lastDespositBonus()
+    {
+        $settings = Setting::all();
+        $lastDespositBonus = $settings->last()->despositBonus;
+
+        return response()->json($lastDespositBonus);
+    }
+
+    // return only last addImageUrl
+    public function lastAddImageUrl()
+    {
+        $settings = Setting::all();
+        $lastAddImageUrl = $settings->last()->addImageUrl;
+
+        return response()->json($lastAddImageUrl);
+    }
+
     /**
      * Show the form for creating a new resource.
      */
