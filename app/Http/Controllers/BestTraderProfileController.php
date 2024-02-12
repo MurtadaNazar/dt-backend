@@ -26,10 +26,7 @@ class BestTraderProfileController extends Controller
         $data = [];
         foreach ($traders as $trader) {
             $data[] = [
-                // 'id' => $trader->id,
-                // 'name' => $trader->name,
-                'balance' => $trader->balance,
-                // 'image' => $trader->imgurl,
+                $trader->balance
             ];
         }
 
