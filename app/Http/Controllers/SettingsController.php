@@ -39,9 +39,9 @@ class SettingsController extends Controller
     public function lastDespositBonus()
     {
         $settings = Setting::all();
-        $lastDespositBonus = $settings->last()->despositBonus;
+        $lastDepositBonus = $settings->last()->despositBonus;
 
-        return response()->json($lastDespositBonus);
+        return response()->json(['depositBonus' => $lastDepositBonus]);
     }
 
     // return only last addImageUrl
@@ -49,8 +49,19 @@ class SettingsController extends Controller
     {
         $settings = Setting::all();
         $lastAddImageUrl = $settings->last()->addImageUrl;
+        $lastAddImageUrl = url('upload/settings/addImageUrl/' . $lastAddImageUrl);
 
-        return response()->json($lastAddImageUrl);
+        return response()->json(['addImageUrl' => $lastAddImageUrl]);
+    }
+
+    // return only last officesImageUrl
+    public function lastOfficesImageUrl()
+    {
+        $settings = Setting::all();
+        $lastOfficesImageUrl = $settings->last()->officesImageUrl;
+        $lastOfficesImageUrl = url('upload/settings/officesImageUrl/' . $lastOfficesImageUrl);
+
+        return response()->json(['officesImageUrl' => $lastOfficesImageUrl]);
     }
 
     /**
