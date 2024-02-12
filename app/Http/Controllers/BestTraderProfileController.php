@@ -25,9 +25,7 @@ class BestTraderProfileController extends Controller
 
         $data = [];
         foreach ($traders as $trader) {
-            $data[] = [
-                $trader->balance
-            ];
+            $data[] = $trader->balance;
         }
 
         return response()->json($data);
