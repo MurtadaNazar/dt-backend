@@ -27,7 +27,7 @@ class AdminCrudController extends Controller
         
 
         foreach ($users as $user) {
-            $user['imageUrl'] = 'upload/admin_images/' . $user['imageUrl'];
+            $user['imageUrl'] = url('upload/admin_images/' . $user['imageUrl']);
             $response[] = [
                 'name' => $user->name,
                 'imgUrl' => $user->imageUrl,
