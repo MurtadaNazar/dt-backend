@@ -31,26 +31,34 @@
                 <div class="col-md-6">
                     <label for="name" class="form-label text-muted">Name of the commenter:</label>
                     <input type="text" class="form-control" id="name" name="name"
-                        placeholder="Name of the commenter" required style="border: 2px solid #3498db;">
+                        placeholder="Name of the commenter" required style="border: 2px solid #3498db;"
+                        value="{{ old('name') }}" autocomplete="false">
+                        >
                 </div>
             </div>
 
             <div class="mb-3">
                 <label for="text" class="form-label text-muted">Comment Text:</label>
                 <textarea name="text" id="text" class="form-control" rows="5" placeholder="Enter the Comment" required
-                    style="border: 2px solid #3498db;"></textarea>
+                    style="border: 2px solid #3498db;"
+                    value="{{ old('text') }}" autocomplete="false"
+                    ></textarea>
             </div>
 
             <div class="row mb-3">
                 <div class="col-md-6">
                     <label for="starts" class="form-label text-muted">Stars:</label>
                     <input type="number" name="starts" id="starts" class="form-control" max="5" min="0"
-                        style="border: 2px solid #3498db;">
+                        style="border: 2px solid #3498db;"
+                        required value="{{ old('starts') }}" autocomplete="false"
+                        >
                 </div>
                 <div class="col-md-6">
                     <label for="date" class="form-label text-muted">Date:</label>
                     <input type="date" name="date" id="date" class="form-control" required
-                        style="border: 2px solid #3498db;">
+                        style="border: 2px solid #3498db;"
+                        value="{{ old('date') }}" autocomplete="false"
+                        >
                 </div>
             </div>
 

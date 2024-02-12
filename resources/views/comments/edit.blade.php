@@ -39,27 +39,27 @@
                 </div>
                 <div class="col-md-6">
                     <label for="name" class="form-label text-muted">Name of the commenter:</label>
-                    <input type="text" class="form-control" id="name" name="name" value="{{ $comment->name }}"
-                        required style="border: 2px solid #3498db;">
+                    <input type="text" class="form-control" id="name" name="name"
+                        value="{{ old('name') || $comment->name }}" required style="border: 2px solid #3498db;">
                 </div>
             </div>
 
             <div class="mb-3">
                 <label for="text" class="form-label text-muted">Comment Text:</label>
                 <textarea name="text" id="text" class="form-control" rows="5" placeholder="Share your thoughts..."
-                    required style="border: 2px solid #3498db;">{{ $comment->text }}</textarea>
+                    required style="border: 2px solid #3498db;">{{ old('text') || $comment->text }}</textarea>
             </div>
 
             <div class="row mb-3">
                 <div class="col-md-6">
                     <label for="starts" class="form-label text-muted">Stars:</label>
-                    <input type="number" name="starts" id="starts" class="form-control" value="{{ $comment->starts }}"
-                        style="border: 2px solid #3498db;">
+                    <input type="number" name="starts" id="starts" class="form-control"
+                        value="{{ old('starts') || $comment->starts }}" style="border: 2px solid #3498db;">
                 </div>
                 <div class="col-md-6">
                     <label for="date" class="form-label text-muted">Date:</label>
-                    <input type="date" name="date" id="date" class="form-control" value="{{ $comment->date }}"
-                        required style="border: 2px solid #3498db;">
+                    <input type="date" name="date" id="date" class="form-control"
+                        value="{{ old('date') || $comment->date }}" required style="border: 2px solid #3498db;">
                 </div>
             </div>
 

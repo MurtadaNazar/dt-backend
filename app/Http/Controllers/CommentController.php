@@ -27,9 +27,9 @@ class CommentController extends Controller
             $data[] = [
                 'id' => $comment->id,
                 'name' => $comment->name,
-                'text' => $comment->text,
-                'avatar_url' => $comment->avatar_url,
-                'stars' => $comment->starts,
+                'desc' => $comment->text,
+                'image' => $comment->avatar_url,
+                'rating' => $comment->starts,
                 'date' => $comment->date,
             ];
         }
