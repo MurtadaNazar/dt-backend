@@ -19,20 +19,19 @@ class StatisticsController extends Controller
         $statistics = Statistics::all();
         $lastStatistics = $statistics->last();
         $data = [
-            'id' => $lastStatistics->id,
-            'monthlyWithDrawal' => [
+            [
                 'title' => 'Monthly Withdrawal',
                 'value' => $lastStatistics->monthlyWithDrawal,
             ],
-            'monthlyIbWithDrawal' => [
+            [
                 'title' => 'Monthly IB Withdrawal',
                 'value' => $lastStatistics->monthlyIbWithDrawal,
             ],
-            'monthlyTradingRange' => [
+            [
                 'title' => 'Monthly Trading Range',
                 'value' => $lastStatistics->monthlyTradingRange,
             ],
-            'monthlyActiveClient' => [
+            [
                 'title' => 'Monthly Active Client',
                 'value' => $lastStatistics->monthlyActiveClient,
             ],
