@@ -51,7 +51,7 @@ class SettingsController extends Controller
         $lastAddImageUrl = $settings->last()->addImageUrl;
         $lastAddImageUrl = url('upload/settings/addImageUrl/' . $lastAddImageUrl);
 
-        return response()->json(['addImageUrl' => $lastAddImageUrl]);
+        return response()->json(['adsImageUrl' => $lastAddImageUrl]);
     }
 
     // return only last officesImageUrl

@@ -50,6 +50,12 @@ Route::get('/depositBonus', function () {
 });
 
 // add image url
-Route::get('/addImageUrl', function () {
+Route::get('/adsImage', function () {
     return app(SettingsController::class)->lastAddImageUrl();
+});
+
+// offices image url
+
+Route::get('/officesImage', function () {
+    return app(SettingsController::class)->lastOfficesImageUrl();
 });
