@@ -2,8 +2,16 @@
 
 @section('content')
     <div class="container">
-        <div class="row">
+        <div class="row center ">
             <div class="col-md-8">
+                <div class="col-md-4 ma-10 ">
+                    @if ($user->imageUrl)
+                        <img src="{{ asset('upload/admin_images/' . $user->imageUrl) }}" class="rounded-circle img-fluid"
+                            alt="Profile Picture" style="width: 128px; height: 128px;">
+                    @else
+                        <img src="{{ asset('img/Avatar-dark.png') }}" class="rounded-circle img-fluid" alt="Profile Picture">
+                    @endif
+                </div>
                 <div class="card mb-4">
                     <div class="card-header bg-primary text-white">
                         <h3>User Details</h3>
@@ -80,15 +88,6 @@
                             </ul>
                         </div>
                     </div>
-                @endif
-            </div>
-
-            <div class="col-md-4">
-                @if ($user->imageUrl)
-                    <img src="{{ asset('upload/admin_images/' . $user->imageUrl) }}" class="rounded-circle img-fluid"
-                        alt="Profile Picture" style="width: 128px; height: 128px;">
-                @else
-                    <img src="{{ asset('img/Avatar-dark.png') }}" class="rounded-circle img-fluid" alt="Profile Picture">
                 @endif
             </div>
         </div>

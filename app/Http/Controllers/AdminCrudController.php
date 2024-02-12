@@ -24,11 +24,13 @@ class AdminCrudController extends Controller
         $users = User::where('type', 'Agent')->get();
 
         $response = [];
+        
 
         foreach ($users as $user) {
+            $user['imageUrl'] = 'upload/admin_images/' . $user['imageUrl'];
             $response[] = [
                 'name' => $user->name,
-                'imgUrl' => $user->imgUrl,
+                'imgUrl' => $user->imageUrl,
                 'socialLinks' => [
                     'facebook' => $user->faceBook,
                     'telegram' => $user->telegram,
@@ -74,15 +76,18 @@ class AdminCrudController extends Controller
             'name', 'userName', 'password', 'type', 'status',
             'faceBook', 'instagram', 'telegram', 'youTube',
         ]);
+
         $data['password'] = Hash::make($data['password']);
         if ($filename) {
             $data['imageUrl'] = $filename;
         }
-
-        User::create($data);
-
-        return redirect()->route('users.index')
+        try {
+            $user = User::create($data);
+            return redirect()->route('users.index')
             ->with('success', 'User created successfully');
+        } catch (\Exception $e) {
+            return redirect()->back()->withInput();
+        }
     }
 
     public function show(User $user)
