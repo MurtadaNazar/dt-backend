@@ -29,7 +29,7 @@ class BestTraderProfileController extends Controller
                 // 'id' => $trader->id,
                 // 'name' => $trader->name,
                 'balance' => $trader->balance,
-                'image' => $trader->imgurl,
+                // 'image' => $trader->imgurl,
             ];
         }
 
