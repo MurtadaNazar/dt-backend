@@ -17,17 +17,26 @@ class StatisticsController extends Controller
     public function indexApi()
     {
         $statistics = Statistics::all();
-
-        $data = [];
-        foreach ($statistics as $statistic) {
-            $data[] = [
-                'id' => $statistic->id,
-                'monthlyWithDrawal' => $statistic->monthlyWithDrawal,
-                'monthlyIbWithDrawal' => $statistic->monthlyIbWithDrawal,
-                'monthlyTradingRange' => $statistic->monthlyTradingRange,
-                'monthlyActiveClient' => $statistic->monthlyActiveClient,
-            ];
-        }
+        $lastStatistics = $statistics->last();
+        $data = [
+            'id' => $lastStatistics->id,
+            'monthlyWithDrawal' => [
+                'title' => 'Monthly Withdrawal',
+                'value' => $lastStatistics->monthlyWithDrawal,
+            ],
+            'monthlyIbWithDrawal' => [
+                'title' => 'Monthly IB Withdrawal',
+                'value' => $lastStatistics->monthlyIbWithDrawal,
+            ],
+            'monthlyTradingRange' => [
+                'title' => 'Monthly Trading Range',
+                'value' => $lastStatistics->monthlyTradingRange,
+            ],
+            'monthlyActiveClient' => [
+                'title' => 'Monthly Active Client',
+                'value' => $lastStatistics->monthlyActiveClient,
+            ],
+        ];
 
         return response()->json($data);
     }
