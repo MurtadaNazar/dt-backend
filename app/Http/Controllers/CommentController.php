@@ -28,7 +28,8 @@ class CommentController extends Controller
                 'id' => $comment->id,
                 'name' => $comment->name,
                 'desc' => $comment->text,
-                'image' => $comment->avatar_url,
+                // 'image' => $comment->avatar_url,
+                'image' => url('upload/comments_avater/' . $comment->avatar_url),
                 'rating' => $comment->starts,
                 'date' => $comment->date,
             ];
